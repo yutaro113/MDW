@@ -1,0 +1,13 @@
+{
+	"name": "SQLServer_VanArsdel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "VanArsdel_SQLServer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
