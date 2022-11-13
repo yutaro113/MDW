@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datfactory014"
+		},
+		"CosmosDB_connectionString": {
+			"value": ""
+		},
+		"DataLake_accountKey": {
+			"value": ""
+		},
+		"FourthCoffee_FileSystem_password": {
+			"value": ""
+		},
+		"SQLDB_CloudStreaming_connectionString": {
+			"value": ""
+		},
+		"SQLDB_SouthLedge_connectionString": {
+			"value": ""
+		},
+		"VanArsdel_SQLServer_connectionString": {
+			"value": ""
+		},
+		"DataLake_properties_typeProperties_url": {
+			"value": "https://datalake017.dfs.core.windows.net/"
+		},
+		"FourthCoffee_FileSystem_properties_typeProperties_host": {
+			"value": "\\\\FourthCoffee\\Rentals"
+		},
+		"FourthCoffee_FileSystem_properties_typeProperties_userId": {
+			"value": "southridge"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

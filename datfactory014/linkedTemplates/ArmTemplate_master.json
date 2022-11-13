@@ -1,0 +1,125 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "データ ファクトリ名",
+			"defaultValue": "datfactory014"
+		},
+		"CosmosDB_connectionString": {
+			"type": "secureString",
+			"metadata": "'CosmosDB' の 'connectionString' のセキュリティで保護された文字列"
+		},
+		"DataLake_accountKey": {
+			"type": "secureString",
+			"metadata": "'DataLake' の 'accountKey' のセキュリティで保護された文字列"
+		},
+		"FourthCoffee_FileSystem_password": {
+			"type": "secureString",
+			"metadata": "'FourthCoffee_FileSystem' の 'password' のセキュリティで保護された文字列"
+		},
+		"SQLDB_CloudStreaming_connectionString": {
+			"type": "secureString",
+			"metadata": "'SQLDB_CloudStreaming' の 'connectionString' のセキュリティで保護された文字列"
+		},
+		"SQLDB_SouthLedge_connectionString": {
+			"type": "secureString",
+			"metadata": "'SQLDB_SouthLedge' の 'connectionString' のセキュリティで保護された文字列"
+		},
+		"VanArsdel_SQLServer_connectionString": {
+			"type": "secureString",
+			"metadata": "'VanArsdel_SQLServer' の 'connectionString' のセキュリティで保護された文字列"
+		},
+		"DataLake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake017.dfs.core.windows.net/"
+		},
+		"FourthCoffee_FileSystem_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "\\\\FourthCoffee\\Rentals"
+		},
+		"FourthCoffee_FileSystem_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "southridge"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "リンクされた ARM テンプレートを含むストレージ アカウントの URI"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "リンクされた ARM テンプレートを格納するストレージ アカウントへの SAS トークン"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "datfactory014_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"CosmosDB_connectionString": {
+						"value": "[parameters('CosmosDB_connectionString')]"
+					},
+					"DataLake_accountKey": {
+						"value": "[parameters('DataLake_accountKey')]"
+					},
+					"SQLDB_CloudStreaming_connectionString": {
+						"value": "[parameters('SQLDB_CloudStreaming_connectionString')]"
+					},
+					"SQLDB_SouthLedge_connectionString": {
+						"value": "[parameters('SQLDB_SouthLedge_connectionString')]"
+					},
+					"DataLake_properties_typeProperties_url": {
+						"value": "[parameters('DataLake_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "datfactory014_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"FourthCoffee_FileSystem_password": {
+						"value": "[parameters('FourthCoffee_FileSystem_password')]"
+					},
+					"VanArsdel_SQLServer_connectionString": {
+						"value": "[parameters('VanArsdel_SQLServer_connectionString')]"
+					},
+					"FourthCoffee_FileSystem_properties_typeProperties_host": {
+						"value": "[parameters('FourthCoffee_FileSystem_properties_typeProperties_host')]"
+					},
+					"FourthCoffee_FileSystem_properties_typeProperties_userId": {
+						"value": "[parameters('FourthCoffee_FileSystem_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'datfactory014_ArmTemplate_0')]"
+			]
+		}
+	]
+}
