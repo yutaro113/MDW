@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@concat(@item().TABLE_NAME,'.csv')",
+					"value": "concat(@item().TABLE_NAME,'.csv')",
 					"type": "Expression"
 				},
 				"fileSystem": "rowdata-vanarsdel"
