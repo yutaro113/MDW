@@ -831,6 +831,7 @@
 					},
 					{
 						"name": "GetTableList",
+						"description": "テーブル名一覧",
 						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {
